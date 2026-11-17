@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Body Scent — เลือกกลิ่นที่ใช่ ในโหมดที่เป็นคุณ</title>
+  <meta name="description" content="Body Scent น้ำหอมฉีดตัวและโรลออน เลือกกลิ่นตามโหมดที่เป็นคุณ: Fresh, Sweet, Confident และ Romance">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* สไตล์เฉพาะหน้าแรก (ใช้ตัวแปรจาก style.css) */
+    .nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--gold); }
+
+    /* หน้าจอแรก: header + hero เต็มความสูงจอ */
+    .first-screen {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      min-height: 100svh;
+    }
+    .first-screen .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero h1 {
+      max-width: 44rem;
+      font-size: 1rem; /* ขนาดจริงกำหนดที่ span ด้านใน */
+      text-wrap: balance;
+    }
+    .hero__main {
+      display: block;
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      line-height: 1.3;
+    }
+    .hero__sub {
+      display: block;
+      margin-top: var(--space-3);
+      font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+      line-height: 1.7;
+      color: var(--ink-soft);
+    }
+
+    /* จุดสี 4 mood เล็กๆ เหนือปุ่ม */
+    .hero__moods {
+      display: flex;
+      justify-content: center;
+      gap: 0.9rem;
+      margin: var(--space-4) 0;
+    }
+    .hero__moods .mood-dot {
+      width: 0.4rem;
+      height: 0.4rem;
+      margin: 0;
+    }
+
+    /* การ์ด mood */
+    .mood-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: var(--space-3);
+    }
+    .mood-card {
+      display: flex;
+      flex-direction: column;
+      padding: var(--space-4) var(--space-3);
+      color: var(--ink);
+      text-decoration: none;
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      transition: border-color var(--ease);
+    }
+    .mood-card:hover { color: var(--ink); border-color: var(--line-strong); }
+
+    .mood-card__icon {
+      width: 2rem;
+      height: 2rem;
+      margin-bottom: var(--space-3);
+      color: var(--mood);
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.25;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .mood-card__title { margin: 0; font-size: 1.6rem; }
+    .mood-card__th {
+      margin-left: 0.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--ink-soft);
+    }
+    .mood-card p {
+      margin: var(--space-3) 0;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--ink-soft);
+    }
+    .mood-card__cta {
+      align-self: flex-start;
+      margin-top: auto;
+      padding-bottom: 0.1rem;
+      font-size: 0.95rem;
+      border-bottom: 1px solid var(--gold);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="first-screen">
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="brand" href="index.html">Body Scent</a>
+        <nav aria-label="เมนูหลัก">
+          <ul class="nav">
+            <li><a href="index.html" aria-current="page">หน้าแรก</a></li>
+            <li><a href="product.html">สินค้า</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <h1>
+          <span class="hero__main">เลือกกลิ่นที่ใช่ ในโหมดที่เป็นคุณ</span>
+          <span class="hero__sub">เติมความมั่นใจและความรู้สึกดีๆ ให้ทุกวันของ Body Scent</span>
+        </h1>
+
+        <div class="hero__moods" aria-hidden="true">
+          <span class="mood-dot" data-mood="fresh"></span>
+          <span class="mood-dot" data-mood="sweet"></span>
+          <span class="mood-dot" data-mood="confident"></span>
+          <span class="mood-dot" data-mood="romance"></span>
+        </div>
+
+        <a class="btn" href="product.html">ดูสินค้าทั้งหมด</a>
+      </div>
+    </section>
+  </div>
+
+  <main>
+    <section class="section" id="moods">
+      <div class="container">
+        <div class="section__head">
+          <h2>เลือกกลิ่นตามโหมดของคุณ</h2>
+          <span class="rule"></span>
+        </div>
+
+        <div class="mood-grid">
+
+          <a class="mood-card" data-mood="fresh" href="product.html?mood=fresh">
+            <svg class="mood-card__icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <path d="M6 26C6 14 14 6 26 6c0 12-8 20-20 20Z"/>
+              <path d="M6 26 18 14"/>
+            </svg>
+            <h3 class="mood-card__title">Fresh<span class="mood-card__th">สดชื่น</span></h3>
+            <span class="mood-rule"></span>
+            <p>กลิ่นหอมโปร่ง เบาสบาย เหมือนเพิ่งอาบน้ำเสร็จใหม่ๆ ช่วยปลุกความตื่นตัวและเติมความสะอาดสดชื่นให้พร้อมลุยตลอดวัน</p>
+            <span class="mood-card__cta">ดูสินค้า Fresh</span>
+          </a>
+
+          <a class="mood-card" data-mood="sweet" href="product.html?mood=sweet">
+            <svg class="mood-card__icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <circle cx="16" cy="9.5" r="4.5"/>
+              <circle cx="16" cy="22.5" r="4.5"/>
+              <circle cx="9.5" cy="16" r="4.5"/>
+              <circle cx="22.5" cy="16" r="4.5"/>
+              <circle cx="16" cy="16" r="2.2"/>
+            </svg>
+            <h3 class="mood-card__title">Sweet<span class="mood-card__th">หวานละมุน</span></h3>
+            <span class="mood-rule"></span>
+            <p>ความหวานแผ่วเบาที่ให้ความรู้สึกอ่อนโยน น่ารัก และอบอุ่นใจ เหมือนอ้อมกอดสบายๆ ที่ชวนให้คนอยู่ใกล้รู้สึกผ่อนคลาย</p>
+            <span class="mood-card__cta">ดูสินค้า Sweet</span>
+          </a>
+
+          <a class="mood-card" data-mood="confident" href="product.html?mood=confident">
+            <svg class="mood-card__icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <path d="M16 4 28 16 16 28 4 16Z"/>
+              <path d="M16 10 22 16 16 22 10 16Z"/>
+            </svg>
+            <h3 class="mood-card__title">Confident<span class="mood-card__th">มั่นใจ</span></h3>
+            <span class="mood-rule"></span>
+            <p>กลิ่นหอมสะอาดที่ดูนิ่ง สุขุม และมีระดับ ช่วยเสริมบุคลิกให้น่าเชื่อถือ พร้อมรับมือกับทุกสถานการณ์และผู้คน</p>
+            <span class="mood-card__cta">ดูสินค้า Confident</span>
+          </a>
+
+          <a class="mood-card" data-mood="romance" href="product.html?mood=romance">
+            <svg class="mood-card__icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <path d="M16 27S5 20 5 12.5A6 6 0 0 1 16 9a6 6 0 0 1 11 3.5C27 20 16 27 16 27Z"/>
+            </svg>
+            <h3 class="mood-card__title">Romance<span class="mood-card__th">โรแมนติก</span></h3>
+            <span class="mood-rule"></span>
+            <p>เสน่ห์ความหวานที่ลุ่มลึก อบอุ่น และน่าค้นหา สร้างบรรยากาศชวนหลงใหลและทิ้งความประทับใจให้คนรอบข้างจดจำไม่รู้ลืม</p>
+            <span class="mood-card__cta">ดูสินค้า Romance</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a class="brand" href="index.html">Body Scent</a>
+      <p>เลือกกลิ่นที่ใช่ ในโหมดที่เป็นคุณ</p>
+      <p>&copy; 2026 Body Scent</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>สินค้าทั้งหมด — Body Scent</title>
+  <meta name="description" content="น้ำหอมฉีดตัวและโรลออน Body Scent เลือกกรองตามโหมด Fresh, Sweet, Confident และ Romance">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--gold); }
+
+    /* หัวข้อหน้า: เล็กกว่า h1 ของหน้าแรก */
+    .page-title {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      line-height: 1.25;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html">Body Scent</a>
+      <nav aria-label="เมนูหลัก">
+        <ul class="nav">
+          <li><a href="index.html">หน้าแรก</a></li>
+          <li><a href="product.html" aria-current="page">สินค้า</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="section__head">
+        <h1 class="page-title">สินค้าทั้งหมด</h1>
+        <p class="lead">เลือกตามโหมดที่เป็นคุณ แล้วกดสั่งซื้อได้ทันที</p>
+        <span class="rule"></span>
+      </div>
+
+      <!-- script.js สร้างปุ่มกรองและการ์ดสินค้าในสองส่วนนี้ -->
+      <div id="filter-bar" class="filter" role="group" aria-label="กรองตามโหมดกลิ่น"></div>
+      <div id="product-list" class="grid" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a class="brand" href="index.html">Body Scent</a>
+      <p>&copy; 2026 Body Scent</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
